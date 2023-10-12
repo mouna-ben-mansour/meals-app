@@ -14,7 +14,7 @@ function MealsOverviewScreen({ route }) {
            // navigation.navigate('MealsOverview', { categoryId: itemData.item.id })
         }
         return (
-            <MealItem title={itemData.item.title} />
+            <MealItem title={itemData.item.title} imageUrl={itemData.item.imageUrl} duration={itemData.item.duration} onPress={pressHandler}/>
         )
     }
     return (
@@ -24,7 +24,6 @@ function MealsOverviewScreen({ route }) {
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
                 renderItem={renderMealItem}
-                numColumns={2}
             />
         </View>
     )
