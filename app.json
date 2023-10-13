@@ -4,7 +4,7 @@
     "slug": "Meals app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "backgroundColor": "#24180f",
+    "backgroundColor": "#FEF1E6",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
