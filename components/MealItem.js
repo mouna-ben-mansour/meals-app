@@ -1,5 +1,6 @@
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MealDetails from "./MealDetails";
 function MealItem ({ title, imageUrl, duration, complexity, affordability, onPress}) {
     return (
         <View style={styles.itemContainer }>
@@ -9,13 +10,7 @@ function MealItem ({ title, imageUrl, duration, complexity, affordability, onPre
                         <Image style={styles.mealImage} source={{uri: imageUrl}}/>
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.details}>
-                        <Text style={styles.detailItem}>
-                            <Icon name="timer-outline" size={18} color="black" /> { duration } min
-                        </Text>
-                        <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-                        <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                    </View>
+                    <MealDetails duration={duration} complexity={complexity} affordability={affordability}/>
                 </View>
             </Pressable>
         </View>
@@ -50,16 +45,6 @@ const styles = StyleSheet.create( {
         margin: 15,
         backgroundColor: '#FBB72C',
         color: 'white'
-    },
-    details: {
-        flexDirection:'row',
-        justifyContent: "center",
-        alignItems:'center',
-        padding: 8
-    },
-    detailItem: {
-        fontSize: 14,
-        marginHorizontal:4
     },
     mealImage: {
         width: '100%',
