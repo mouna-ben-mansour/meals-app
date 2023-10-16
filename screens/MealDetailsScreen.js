@@ -1,33 +1,51 @@
-import {View, Text, StyleSheet,Image} from "react-native";
+import {View, Text, StyleSheet, Image, ScrollView} from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
+import Subtitle from "../components/MealDetail/Subtitle";
+import List from "../components/MealDetail/List";
 
 function MealDetailsScreen({route}) {
     const mealId = route.params.mealId;
     const displayedMeal = MEALS.find((mealItem)=> mealItem.id === mealId)
 
     return (
-        <View>
+        <ScrollView style={styles.rootContainer}>
             <Image style={styles.mealImage} source={{uri: displayedMeal.imageUrl}}/>
-            <Text>{ displayedMeal.title }</Text>
+            <Text style={styles.title}>{ displayedMeal.title }</Text>
             <MealDetails duration={displayedMeal.duration} complexity={displayedMeal.complexity} affordability={displayedMeal.affordability}/>
-            <Text>Ingredients</Text>
-            { displayedMeal.ingredients.map((ingredient) => (
-                <Text key={ingredient}>{ ingredient }</Text>
-            ))}
-            <Text>Steps</Text>
-            { displayedMeal.steps.map((step) => (
-                <Text key={step}>{ step }</Text>
-            ))}
-        </View>
+            <View style={styles.listOuterContainer}>
+                <View style={styles.listContainer}>
+                    <Subtitle>Ingredients</Subtitle>
+                    <List data={displayedMeal.ingredients}></List>
+
+                    <Subtitle>Steps</Subtitle>
+                    <List data={displayedMeal.steps}></List>
+                </View>
+            </View>
+        </ScrollView>
     )
 }
 export default MealDetailsScreen;
 
 const styles = StyleSheet.create({
+    rootContainer: {
+        marginBottom:30
+    },
     mealImage: {
         width: '100%',
-        height: 200
+        height: 350
     },
+    title: {
+        margin: 15,
+        textAlign: 'center',
+        fontSize: 24,
+        fontWeight: 'bold'
+    },
+    listOuterContainer: {
+        alignItems: 'center'
+    },
+    listContainer: {
+        width: '80%'
+    }
 })
