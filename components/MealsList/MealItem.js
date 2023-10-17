@@ -1,10 +1,16 @@
-import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MealDetails from "./MealDetails";
-function MealItem ({ title, imageUrl, duration, complexity, affordability, onPress}) {
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import MealDetails from "../MealDetails";
+import { useNavigation } from '@react-navigation/native';
+function MealItem ({ id ,title, imageUrl, duration, complexity, affordability}) {
+    const navigation = useNavigation();
+    function pressHandler() {
+        navigation.navigate('MealDetails', {
+            mealId: id,
+        });
+    }
     return (
         <View style={styles.itemContainer }>
-            <Pressable onPress={onPress} android_ripple={{color: '#ccc'}}>
+            <Pressable onPress={pressHandler} android_ripple={{color: '#ccc'}}>
                 <View style={styles.innerContainer}>
                     <View >
                         <Image style={styles.mealImage} source={{uri: imageUrl}}/>
