@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "My Healthy Recipe",
-    "slug": "recipe app",
+    "slug": "recipe-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "backgroundColor": "#FEF1E6",
@@ -26,10 +26,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mouna_2023.recipeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d16ca248-d9a0-4302-b51b-60dd8a30e71b"
+      }
     }
   }
 }
